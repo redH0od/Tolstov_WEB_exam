@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'config.php';
+require __DIR__.'/../sources/config.php';
 
 $link = mysqli_connect($host, $user, $pass, $db);
 if (!$link) {
