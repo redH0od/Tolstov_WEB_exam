@@ -12,7 +12,7 @@ services:
       MYSQL_PASSWORD: apppassword
     volumes:
       - db_data:/var/lib/mysql
-      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+      - ./web/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
     ports:
       - "3306:3306"
 
@@ -24,8 +24,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./public:/var/www/html
-      - ./source:/var/www/source
+      - ./web/public:/var/www/html
+      - ./web/source:/var/www/source
     environment:
       DB_HOST: db
       DB_NAME: tolstov_exam
