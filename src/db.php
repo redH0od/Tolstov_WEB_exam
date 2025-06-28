@@ -30,6 +30,6 @@ class Database {
 
     public function login($username, $password) {
     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    return $this->db->query($query)->fetch(PDO::FETCH_ASSOC);
     }
 }
