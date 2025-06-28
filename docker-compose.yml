@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: web_app
+      MYSQL_DATABASE: tolstov_exam
       MYSQL_USER: appuser
       MYSQL_PASSWORD: apppassword
     volumes:
