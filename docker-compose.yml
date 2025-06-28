@@ -1,37 +1,12 @@
 version: '3.8'
-
 services:
-  db:
-    image: mysql:8.0
-    container_name: tolstov_exam_mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: tolstov_exam
-      MYSQL_USER: appuser
-      MYSQL_PASSWORD: apppassword
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
-    ports:
-      - "3306:3306"
-
   web:
-    build: ./web
-    container_name: tolstov_exam_web
-    depends_on:
-      - db
+    build: .
     ports:
       - "8080:80"
     volumes:
-      - ./web/public:/var/www/html
-      - ./web/source:/var/www/source
+      - ./src:/var/www/html
+      - ./src/database.sqlite:/var/www/html/database.sqlite
     environment:
-      DB_HOST: db
-      DB_NAME: tolstov_exam
-      DB_USER: appuser
-      DB_PASS: apppassword
-
-volumes:
-  db_data:
-
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
