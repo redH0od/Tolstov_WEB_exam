@@ -29,8 +29,7 @@ class Database {
     }
 
     public function login($username, $password) {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
-        $stmt->execute(['username' => $username, 'password' => $password]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    return $this->db->query($query)->fetch(PDO::FETCH_ASSOC);
     }
 }
